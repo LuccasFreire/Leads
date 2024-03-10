@@ -2,7 +2,7 @@
 
 use App\Http\Controllers\LeadController;
 use Illuminate\Support\Facades\Route;
-
+use App\Models\Lead;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,4 +14,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [LeadController::class, 'index']);
+Route::get('/', [LeadController::class, 'index'])->name('homepageroute');
+Route::get('/detail/{lead}', function (Lead $lead) {
+    return view('detail', ['lead' => $lead]);
+})->name('detailroute');
