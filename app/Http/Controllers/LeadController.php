@@ -11,4 +11,13 @@ class LeadController extends Controller
 
         return view('home', ['leads' => Lead::all()]);
     }
+
+    public function salvar(Request $request, $id) {
+        $nome = $request->input('nome');
+        $email = $request->input('email');
+        $cpf = $request->input('cpf');
+
+        Lead::where('id', $id)->update(['nome' => $nome, 'email' => $email, 'cpf' => $cpf]);
+        return redirect()->route('homepageroute')->with("success", "Usuário editado com sucesso");
+    }
 }

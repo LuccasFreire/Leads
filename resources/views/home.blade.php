@@ -22,7 +22,9 @@
                 <a href="{{route('detailroute', $lead)}}">
                     <button class="btn btn-success">Visualizar</button>\
                 </a>
-                <button class="btn btn-primary">Editar</button>
+                <a href="{{route('editroute', $lead)}}">
+                    <button class="btn btn-primary">Editar</button>\
+                </a>
                 <button class="btn btn-danger">Apagar</button>
             </td>
             </tr>
