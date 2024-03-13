@@ -4,9 +4,12 @@
 @section('content')
 
 <div class="container w-50">
-    <a href="{{ route('createroute')}}">
-        <button class="btn btn-success mb-5">Cadastrar</button>
-    </a>
+    <div class="container d-flex justify-content-between">
+        <h3 class="">Cadastrar novos leads</h3>
+        <a href="{{ route('createroute')}}">
+            <button class="btn btn-success mb-5">Cadastrar</button>
+        </a>
+    </div>
     <table class="table table-striped-columns">
         <thead>
           <tr>
@@ -37,6 +40,10 @@
             </td>
             </tr>
             @endforeach
+            <div class="container">
+                {{ $leads->links() }}
+            </div>
+
         </tbody>
       </table>
 </div>

@@ -2,14 +2,19 @@
 
 namespace App\Http\Controllers;
 use App\Models\Lead;
+use Illuminate\Contracts\Pagination\Paginator;
 use Illuminate\Http\Request;
+use Illuminate\Pagination\Paginator as PaginationPaginator;
 use Illuminate\Support\Facades\DB;
 use PhpParser\Node\Stmt\Label;
 
 class LeadController extends Controller
 {
     public function index(){
-        return view('home', ['leads' => Lead::all()]);
+        $leads = Lead::paginate(2);
+        return view('home', [
+            'leads' => $leads
+        ]);
     }
 
     public function create(){
@@ -42,7 +47,7 @@ class LeadController extends Controller
         }
 
         public function delete($request){
-            $product  =  Lead::where('id' , $request)->first();
+            $product = Lead::where('id' , $request)->first();
             $product->delete();
             return redirect()->route('homepageroute')->with("success", "Usuário deletado com sucesso");
         }
