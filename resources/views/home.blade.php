@@ -1,7 +1,11 @@
 @extends('layout.layout')
 
 @section('content')
+
 <div class="container w-50">
+    <a href="{{ route('createroute')}}">
+        <button class="btn btn-success mb-5">Cadastrar</button>
+    </a>
     <table class="table table-striped-columns">
         <thead>
           <tr>
@@ -18,14 +22,14 @@
               <td>{{$lead->nome}}</td>
               <td>{{$lead->email}}</td>
               <td>{{$lead->cpf}}</td>
-              <td>
-                <a href="{{route('detailroute', $lead)}}">
-                    <button class="btn btn-success">Visualizar</button>\
+              <td class="g-3">
+                <a href="{{route('detailroute', $lead)}}" class = 'ml-4'>
+                    <button class="btn btn-success">Visualizar</button>
                 </a>
-                <a href="{{route('editroute', $lead)}}">
-                    <button class="btn btn-primary">Editar</button>\
+                <a href="{{route('editroute', $lead)}}" class = 'm-1'>
+                    <button class="btn btn-primary">Editar</button>
                 </a>
-                <button class="btn btn-danger">Apagar</button>
+                <button class="btn btn-danger" class = 'm-1'>Apagar</button>
             </td>
             </tr>
             @endforeach
