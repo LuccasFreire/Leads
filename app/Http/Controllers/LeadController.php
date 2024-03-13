@@ -40,5 +40,11 @@ class LeadController extends Controller
 
             return redirect()->route('homepageroute')->with("success", "Usuário criado com sucesso");
         }
+
+        public function delete($request){
+            $product  =  Lead::where('id' , $request)->first();
+            $product->delete();
+            return redirect()->route('homepageroute')->with("success", "Usuário deletado com sucesso");
+        }
 }
 

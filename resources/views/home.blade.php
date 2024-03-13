@@ -1,4 +1,5 @@
 @extends('layout.layout')
+@section('titulo', 'HomePage')
 
 @section('content')
 
@@ -13,23 +14,26 @@
             <th scope="col">Nome</th>
             <th scope="col">Email</th>
             <th scope="col">CPF</th>
+            <th scope="col" class='text-center'>Ações</th>
           </tr>
         </thead>
         <tbody>
             @foreach ($leads as $key=>$lead)
             <tr>
-              <th scope="row">{{++$key}}</th>
+              <th scope="row">{{$lead->id}}</th>
               <td>{{$lead->nome}}</td>
               <td>{{$lead->email}}</td>
               <td>{{$lead->cpf}}</td>
-              <td class="g-3">
-                <a href="{{route('detailroute', $lead)}}" class = 'ml-4'>
+              <td>
+                <a href="{{route('detailroute', $lead)}}" class = 'm-2'>
                     <button class="btn btn-success">Visualizar</button>
                 </a>
-                <a href="{{route('editroute', $lead)}}" class = 'm-1'>
+                <a href="{{route('editroute', $lead)}}" class = 'm-2'>
                     <button class="btn btn-primary">Editar</button>
                 </a>
-                <button class="btn btn-danger" class = 'm-1'>Apagar</button>
+                <a href="{{route('deleteroute', $lead->id)}}">
+                    <button class="btn btn-danger" class = 'm-2'>Apagar</button>
+                </a>
             </td>
             </tr>
             @endforeach

@@ -27,10 +27,8 @@ Route::get('edit/{lead}', function (Lead $lead) {
 
 Route::put('update/{id}', [LeadController::class, 'update'])->name('salvarroute');
 
-Route::delete('delete/{$lead}', function(Lead $lead) {
-    $lead::destroy($lead);
-    return redirect()->route('homepageroute')->with("success", "Usuário deletado com sucesso");
-})->name('deleteroute');
+Route::get('delete/{id}', [LeadController::class, 'delete'])->name('deleteroute');
+
 Route::get('create/', [LeadController::class, 'create'])->name('createroute');
 Route::post('store/', [LeadController::class, 'store'])->name('storeroute');
 
