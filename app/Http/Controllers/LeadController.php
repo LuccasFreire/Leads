@@ -11,7 +11,7 @@ use PhpParser\Node\Stmt\Label;
 class LeadController extends Controller
 {
     public function index(){
-        $leads = Lead::paginate(2);
+        $leads = Lead::paginate(5);
         return view('home', [
             'leads' => $leads
         ]);
@@ -30,7 +30,6 @@ class LeadController extends Controller
     }
 
     public function store(Request $request){
-        #$nome = $request -> input();
         $valid = $request->validate([
             'nome' => 'min:6',
             'email' => 'required|unique:leads|max:255',
@@ -51,5 +50,16 @@ class LeadController extends Controller
             $product->delete();
             return redirect()->route('homepageroute')->with("success", "Usuário deletado com sucesso");
         }
+        public function search(Request $request) {
+            if ($request-> input("busca")) {
+                    $leads = Lead::where('nome', 'LIKE', '%'.$request->input("busca").'%')->latest()->paginate(15);
+                    return view('home', [
+                        'leads' => $leads
+                    ]);
+            }else {
+                return redirect()->back()->with('message', 'Busca vazia');
+            }
+        }
+
 }
 

@@ -4,11 +4,23 @@
 @section('content')
 
 <div class="container w-50">
+
+
     <div class="container d-flex justify-content-between">
+        </form>
         <h3 class="">Cadastrar novos leads</h3>
         <a href="{{ route('createroute')}}">
             <button class="btn btn-success mb-5">Cadastrar</button>
         </a>
+    </div>
+    <div class=" m-2 d-inline">
+        <form action=" {{ url('search') }}" method='GET' role='search'>
+            <div class="input-group">
+                <input type="search" name ='busca' value='' placeholder="Procure os leads:" class = 'form-control'/>
+                <button class='btn bg-primary' type='submit'>
+                    <p class ='text-white align-middle'>Buscar</p>
+                </button>
+            </div>
     </div>
     <table class="table table-striped-columns">
         <thead>

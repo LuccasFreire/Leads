@@ -1,4 +1,5 @@
 @extends('layout.layout')
+@section('titulo', 'Criar Lead')
 
 @section('content')
 <div class="container w-50">

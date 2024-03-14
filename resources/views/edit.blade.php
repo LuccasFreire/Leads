@@ -1,4 +1,5 @@
 @extends('layout.layout')
+@section('titulo', 'Editar Lead')
 
 @section('content')
 <form method="POST" action="{{ url("update",$lead->id) }}">

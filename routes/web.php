@@ -31,4 +31,6 @@ Route::get('delete/{id}', [LeadController::class, 'delete'])->name('deleteroute'
 
 Route::get('create/', [LeadController::class, 'create'])->name('createroute');
 Route::post('store/', [LeadController::class, 'store'])->name('storeroute');
+Route::get('search/', [LeadController::class, 'search'])->name('searchroute');
+
 
